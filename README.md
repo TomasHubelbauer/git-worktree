@@ -31,17 +31,38 @@ I am going to test this out by doing this:
   ```
 - [x] Making changes to the new local branch worktree and pushing them
   ```sh
+  cd worktree1
   touch test-in-worktree-1
   git add *
   git commit -m "Add the test file" -m "This is a test of adding a change in a worktree"
   git push --set-upstream origin tom-test-2
   ```
   https://github.com/TomasHubelbauer/git-worktree/tree/tom-test-2
-- [ ] Checking out the `tom-test` existing remote branch to a worktree
-- [ ] Making changes to the existing remote branch worktree and pushing them
-- [ ] Pushing the changes and checking the diffs against `main`
+- [x] Checking out the `tom-test` existing remote branch to a worktree
+  ```sh
+  git worktree add worktree2 tom-test
+  # Preparing worktree (new branch 'tom-test')
+  git worktree remove worktree2
+  git fetch --all
+  git worktree add worktree2 tom-test
+  # Preparing worktree (checking out 'tom-test')
+  ```
+- [x] Making changes to the existing remote branch worktree and pushing them
+  ```sh
+  cd worktree2
+  git status
+  # On branch tom-test
+  # Your branch is up to date with 'origin/tom-test'.
+  touch test-in-worktree-2
+  git add *
+  git commit -m "Add the test file" -m "This is a test of adding a change in a worktree"
+  git push
+  ```
+  Note that `--set-upstream origin` is not needed here.
+  https://github.com/TomasHubelbauer/git-worktree/tree/tom-test
 
 ## Fun facts
 
-- You probably want to ignore the worktree directory otherwise it will
-  show up as a change in `git status` in its parent directory chain
+- You want to ignore the worktree directory otherwise it will show up as a change
+  in `git status` in its parent directory chain
+- To remove a worktree, use `git worktree remove directory-name`
