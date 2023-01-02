@@ -17,8 +17,9 @@ git worktree add -b new-branch worktree-2-directory
 
 I am going to test this out by doing this:
 
-1. Creating a new remote branch on GitHub alongside `main`
-2. Cloning this repository and checking out the new branch to a worktree
-3. Creating a new branch into another worktree
-4. Making changes to both worktrees
-5. Pushing the changes and checking the diffs against `main`
+- [x] Creating a new remote branch on GitHub alongside `main`
+  https://github.com/TomasHubelbauer/git-worktree/tree/tom-test
+- [ ] Cloning this repository and checking out the new branch to a worktree
+- [ ] Creating a new branch into another worktree
+- [ ] Making changes to both worktrees
+- [ ] Pushing the changes and checking the diffs against `main`
