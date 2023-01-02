@@ -66,3 +66,7 @@ I am going to test this out by doing this:
 - You want to ignore the worktree directory otherwise it will show up as a change
   in `git status` in its parent directory chain
 - To remove a worktree, use `git worktree remove directory-name`
+- If the worktree name is the same as the branch name (new or existing fetched),
+  you can omit the branch name in the command:
+  `git worktree add .tom/worktrees/my-branch` will create a worktree named
+  `my-branch` and check out a branch named `my-branch` into it
