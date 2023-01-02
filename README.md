@@ -65,8 +65,24 @@ I am going to test this out by doing this:
 
 - You want to ignore the worktree directory otherwise it will show up as a change
   in `git status` in its parent directory chain
+  - But note that this will prevent the VS Code SCM UI from discovering the worktree
+    as another repository to display the UI for
+  - Also, this will make `git add *` behave weirdly, thinking you want to add ignored
+    files and warning on it
+    I think it might be because the ignore file it replacing the parent one or sth?
 - To remove a worktree, use `git worktree remove directory-name`
 - If the worktree name is the same as the branch name (new or existing fetched),
   you can omit the branch name in the command:
   `git worktree add .tom/worktrees/my-branch` will create a worktree named
   `my-branch` and check out a branch named `my-branch` into it
+
+## To-Do
+
+### Figure out why `git add *` in an ignored worktree behaves weirdly
+
+Try to reproduce this problem:
+I ran `git add *` with a simple `README.md` change in the worktree after having run
+`pnpm install` in the parent repository directory and `git add *` warned me that it
+would also add changes in `node_modules`.
+Not sure why this happened exacly, but I am sure it will be solvable.
+
